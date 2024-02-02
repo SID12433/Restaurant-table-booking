@@ -1,0 +1,34 @@
+
+1) user registration
+url : http://127.0.0.1:8000/api/register/
+method: post
+data : username,email,address,phone,password
+
+2)token obtain
+url : http://127.0.0.1:8000/api/token/
+method: post
+data : username,password
+
+3)restaurant list
+url : http://127.0.0.1:8000/api/restaurants/
+method: get
+data : nill
+
+4)restaurant detail
+url : http://127.0.0.1:8000/api/restaurants/<int:pk>/
+method: get
+data : nill
+
+7)reservation
+url : http://127.0.0.1:8000/api/reservation/<int:pk>/
+method: post
+data : table,time,date,people_count
+
+8)payment
+url : http://127.0.0.1:8000/api/restaurants/<int:pk>/payment/
+method: post
+data : nill
+
+
+
+

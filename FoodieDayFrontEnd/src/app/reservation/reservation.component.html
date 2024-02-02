@@ -1,0 +1,29 @@
+<div class="container mt-5 d-flex flex-column align-items-center box">
+    <div class="border border-dark p-5 custom-shadow top-space" id="addbox">
+        <h3 class="field">Reservation</h3>
+
+        <label for="">People count</label>
+        <input type="number" value="1" [(ngModel)]="people_count" class="field"><br>
+
+        <label for="">Time</label>
+        <input type="time" [(ngModel)]="time" class="field"><br>
+
+        <label for="">Date</label>
+        <input type="date" [(ngModel)]="date" class="field"><br>
+
+        <button href="" (click)="makereservation()" class=" btn btn-outline-success mt-3 ">Make Reservation</button>
+
+    </div>
+</div>
+
+<style>
+    #addbox{
+        margin-top: 100px;
+        margin-bottom: 70px;
+        
+    }
+    .field{
+        margin-bottom: 20px;
+    }
+ </style>
+

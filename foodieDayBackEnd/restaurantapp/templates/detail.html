@@ -1,0 +1,110 @@
+{%extends 'index.html'%}
+
+{%block body_block%}
+    
+
+
+<div id="top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="left-content">
+                    <div class="inner-content">
+                        <h4 class="text-dark">{{restaurant.name}}</h4>
+                        <div class="main-white-button scroll-to-section">
+                            <h6 class="text-dark">{{restaurant.description}}</h6>
+                        </div>
+                        <div>
+                            <a href="{%url 'reservation' restaurant.id%}" class="btn btn-outline-info mt-3">Reservations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="main-banner header-text">
+                    <div >
+                      <div class="item">
+                        <div class="img-fill">
+                            <img src="{{restaurant.image.url}}" alt="">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ***** Menu Area Starts ***** -->
+<section class="section" id="offers">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <div class="section-heading">
+                    <h6>{{restaurant.name}}</h6>
+                    <h2>Menu list</h2>
+                    <a class="btn btn-outline-success" href="{%url 'add_menu' restaurant.id%}">ADD MENU</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- here is the list -->
+            {%for m in restaurant.menu_items.all%}
+                <div class="col-lg-6">
+                    <div class="tab-item mb-5">
+                        <h4>{{m.name}}</h4>
+                        <p>{{m.description}}</p>
+                        <div class="price">
+                            <h6>$ {{m.price}}</h6>
+                        </div>
+                        <a href="{%url 'remove_menu' m.id%}" class="btn btn-outline-danger mt-3">remove</a>
+                    </div>
+                            
+                </div>
+
+            {%endfor%}
+            <!-- here is the list ending -->
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 offset-lg-4 text-center">
+                <div class="section-heading">
+                    <h2>Available Tables</h2>
+                    <a class="btn btn-outline-success" href="{%url 'add_table' restaurant.id%}">ADD TABLE</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- here is the list -->
+            <table class="table table-hover table-striped mt-4">
+                <tr>
+                    <th>Table number</th>
+                    <th>Capacity</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                {%for t in restaurant.tablelist.all%}
+                    <tr>
+                        <td>{{t.table_number}}</td>
+                        <td>{{t.capacity}}</td>
+                        <td>{{t.status}}</td>
+                        <td>
+                            <a class="btn btn-outline-danger" href="{%url 'remove_table' t.id%}">REMOVE</a>
+                        </td>
+                    </tr>
+                {%endfor%}
+            </table>
+            <!-- here is the list ending -->
+        </div>
+
+    </div>
+</section>
+
+
+
+{%endblock%}
+
